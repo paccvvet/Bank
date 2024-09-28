@@ -130,3 +130,19 @@ btnScrollTo.addEventListener('click', function (e) {
   // Only for newBrosers
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+/////////////////////////////
+// Виды и обработчики событий
+
+//const h1 = document.querySelector('h1');
+// const alertMouseEnterH1 = function (e) {
+//   alert('addEventListener: Your now in h1 el ');
+//   h1.removeEventListener('mouseenter', alertMouseEnterH1);
+// };
+// const alertMouseEnterH1 = function (e) {
+//   alert('addEventListener: Your now in h1 el ');
+// };
+// setTimeout(() => h1.removeEventListener('mouseenter', alertMouseEnterH1), 3000);
+// h1.addEventListener('mouseenter', alertMouseEnterH1);
+// h1.onclick = function (e) {
+//   alert('Your now in h1 el num2 ');
+// };
