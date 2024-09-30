@@ -146,3 +146,38 @@ btnScrollTo.addEventListener('click', function (e) {
 // h1.onclick = function (e) {
 //   alert('Your now in h1 el num2 ');
 // };
+
+//////////////////////////////////////
+// Event Propagation
+// rgb(255, 255, 255)
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); // Максимум не включается, минимум включается
+}
+
+const getRandomColor = () =>
+  `rgb(${getRandomInt(0, 255)}, ${getRandomInt(0, 255)}, ${getRandomInt(
+    0,
+    255
+  )})`;
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = getRandomColor();
+  console.log('Link', e.target, e.currentTarget);
+  // Stop prapagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = getRandomColor();
+  console.log('Links', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener(
+  'click',
+  function (e) {
+    this.style.backgroundColor = getRandomColor();
+    console.log('Nav', e.target, e.currentTarget);
+  }
+  //true
+);
