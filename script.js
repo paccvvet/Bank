@@ -205,4 +205,28 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 //   //true
 // );
 
-// Event Delegation
+//DOM traversing(Перемещение по DOM)
+
+// const h1 = document.querySelector('h1');
+
+// // Перемещение вниз (к потомку)
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// console.log(h1.firstElementChild);
+// h1.firstElementChild.style.color = 'green';
+// console.log(h1.lastElementChild);
+
+// // Перемещение к родителю
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+
+// const h2 = document.querySelector('h2');
+// console.log(h2);
+// console.log(h2.closest('.section'));
+
+// // Перемещение в стороны
+
+// console.log(h2.previousElementSibling);
+// console.log(h2.nextElementSibling);
+// console.log(h1.parentElement.children);
