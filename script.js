@@ -76,7 +76,8 @@ tabContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 // Анимация потускнения
-const navLinksFadeOut = function (e, opacity) {
+const navLinksFadeOut = function (e) {
+  console.log(this, e.currentTarget);
   if (e.target.classList.contains('nav__link')) {
     const linkOver = e.target;
     const siblingLinks = linkOver
@@ -85,19 +86,15 @@ const navLinksFadeOut = function (e, opacity) {
     const logo = linkOver.closest('.nav').querySelector('img');
     const logoText = linkOver.closest('.nav').querySelector('.nav__text');
     siblingLinks.forEach(sib => {
-      if (sib !== linkOver) sib.style.opacity = opacity;
+      if (sib !== linkOver) sib.style.opacity = this;
     });
-    logo.style.opacity = opacity;
-    logoText.style.opacity = opacity;
+    logo.style.opacity = this;
+    logoText.style.opacity = this;
   }
 };
-
-nav.addEventListener('mouseover', function (e) {
-  navLinksFadeOut(e, 0.4);
-});
-nav.addEventListener('mouseout', function (e) {
-  navLinksFadeOut(e, 1);
-});
+// Работа с аргументами при помощи bind и this
+nav.addEventListener('mouseover', navLinksFadeOut.bind(0.4));
+nav.addEventListener('mouseout', navLinksFadeOut.bind(1));
 ////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
