@@ -1,5 +1,8 @@
 'use strict';
-
+const tabs = document.querySelectorAll('.operations__tab');
+const tabContainer = document.querySelector('.operations__tab-container');
+const tabContents = document.querySelectorAll('.operations__content');
+const nav = document.querySelector('.nav');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const modalWindow = document.querySelector('.modal-window');
@@ -56,9 +59,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 // Вкладки
-const tabs = document.querySelectorAll('.operations__tab');
-const tabContainer = document.querySelector('.operations__tab-container');
-const tabContents = document.querySelectorAll('.operations__content');
 
 tabContainer.addEventListener('click', function (e) {
   const clickedButton = e.target.closest('.operations__tab');
@@ -74,6 +74,29 @@ tabContainer.addEventListener('click', function (e) {
   document
     .querySelector(`.operations__content--${clickedButton.dataset.tab}`)
     .classList.add('operations__content--active');
+});
+// Анимация потускнения
+const navLinksFadeOut = function (e, opacity) {
+  if (e.target.classList.contains('nav__link')) {
+    const linkOver = e.target;
+    const siblingLinks = linkOver
+      .closest('.nav__links')
+      .querySelectorAll('.nav__link');
+    const logo = linkOver.closest('.nav').querySelector('img');
+    const logoText = linkOver.closest('.nav').querySelector('.nav__text');
+    siblingLinks.forEach(sib => {
+      if (sib !== linkOver) sib.style.opacity = opacity;
+    });
+    logo.style.opacity = opacity;
+    logoText.style.opacity = opacity;
+  }
+};
+
+nav.addEventListener('mouseover', function (e) {
+  navLinksFadeOut(e, 0.4);
+});
+nav.addEventListener('mouseout', function (e) {
+  navLinksFadeOut(e, 1);
 });
 ////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
