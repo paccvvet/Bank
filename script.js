@@ -95,6 +95,19 @@ const navLinksFadeOut = function (e) {
 // Работа с аргументами при помощи bind и this
 nav.addEventListener('mouseover', navLinksFadeOut.bind(0.4));
 nav.addEventListener('mouseout', navLinksFadeOut.bind(1));
+
+// Sticky navigation
+const navCoords = nav.getBoundingClientRect();
+console.log(navCoords);
+
+window.addEventListener('scroll', function (e) {
+  if (window.scrollY > navCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
+
 ////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
