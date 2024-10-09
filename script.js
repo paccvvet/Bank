@@ -120,22 +120,22 @@ nav.addEventListener('mouseout', navLinksFadeOut.bind(1));
 // };
 // const observer = new IntersectionObserver(observerCallback, observerOptions);
 // observer.observe(section1);
-// const navHeigth = nav.getBoundingClientRect().height;
-// const getStickyNav = function (entries) {
-//   const entry = entries[0];
-//   console.log(entry);
-//   if (!entry.isIntersecting) {
-//     nav.classList.add('sticky');
-//   } else {
-//     nav.classList.remove('sticky');
-//   }
-// };
-// const observer = new IntersectionObserver(getStickyNav, {
-//   root: null,
-//   threshold: 0,
-//   rootMargin: `-${navHeigth}px`,
-// });
-// observer.observe(header);
+const navHeigth = nav.getBoundingClientRect().height;
+const getStickyNav = function (entries) {
+  const entry = entries[0];
+  console.log(entry);
+  if (!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+};
+const observer = new IntersectionObserver(getStickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeigth}px`,
+});
+observer.observe(header);
 ////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
